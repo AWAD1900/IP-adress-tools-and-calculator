@@ -21,7 +21,7 @@ def display_menu(options: list) -> None:
 
 menu_a = ("IPv4", "IPv6", 'Quit')
 menu_b = ("Convert to binary", "From binary to decimal", "Decimal notation to CIDR", "CIDR to decimal notation", "Find the network adress", "Find the broadcast adress", "Find all the possible subnets after switching the subnet mask", "VLSM", "IPv4 cheatsheet", "Return to main menu")
-menu_c = ("Compress an IPv6 adress", "Decompress an IPv6 adress","Return to main menu")
+menu_c = ("Compress an IPv6 address", "Decompress an IPv6 address","Return to main menu")
 
 system('cls' if name == 'nt' else 'clear')
 display_menu(menu_a)
@@ -71,7 +71,7 @@ while a in 'abc':
                         else:
                             subnetMask = input_subnetMask("Enter the network's subnet mask (cidr or decimal)")
 
-                        table([["The network adress is", networkAdress(netAdress,subnetMask)+f' {subnetMask}']])
+                        table([["The network adress is", networkAddress(netAdress,subnetMask)+f' {subnetMask}']])
                     
                     
                     case 'f':
@@ -141,7 +141,7 @@ while a in 'abc':
                                 if((2**(32-int(subnetMask[1:])))+2 >= sum(i[1] for i in networkNeeds)):
                                     break
                                                         
-                            if(networkAdress(address, subnetMask) != address):
+                            if(networkAddress(address, subnetMask) != address):
                                 print(f"\n\033[31mThe address {address} is not a network address with the {subnetMask} mask\033[0m")
                             else:
                                 break

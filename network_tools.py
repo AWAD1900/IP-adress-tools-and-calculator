@@ -94,7 +94,7 @@ def decompress_ipv6(ip: str) -> str:
         ip[ind:ind] = ['0000']*(8 - len(ip))
     return ':'.join(ip)
 
-def networkAdress(ip: str, subnetMask: str='') -> str:
+def networkAddress(ip: str, subnetMask: str='') -> str:
     if '/' in ip: 
         ip , subnetMask = ipv4_to_binary(ip.split('/')[0]).split('.') , ipv4_to_binary(cidr_to_decimal('/'+ip.split('/')[1])).split('.')
     else:
@@ -133,7 +133,7 @@ def switchSubnet(ip: str, initialMask: str='', newMask: str='') -> list:
     broadAdress = ['Broadcast adress']
     lastUsableAdress = ['Last usable adress']
 
-    netAdress = [int(i) for i in networkAdress(ip,initialMask).split('.')]
+    netAdress = [int(i) for i in networkAddress(ip,initialMask).split('.')]
     bAdress = broadcastAdress('.'.join([str(i) for i in netAdress]),newMask).split('.')
 
     subnetAdresses.append('.'.join([str(i) for i in netAdress]))
@@ -288,7 +288,7 @@ if __name__ == "__main__":
     # a = input_ipv4_with_mask("Enter une adresse ip")
 
     # print(a)
-    print(networkAdress('192.168.1.0', '/24'))
+    print(networkAddress('192.168.1.0', '/24'))
     print(input_ipv4_with_mask("Yo"))
     # print(input_ipv6("Yo"))
     # print(input_subnetMask("Yo"))
